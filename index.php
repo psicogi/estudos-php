@@ -18,51 +18,83 @@
         $descricao = "Meu portifolio feito em HTML e PHP";
         $dataProjeto = "2026-09-16";
         $finalizado = true;
+        $projetos = [
+            [
+                "nome" => "Meu Portifolio",
+                "finalizado" => true,
+                "data" => "2026-09-16",
+                "descricao" => "Meu portifolio feito em HTML e PHP"
+            ],
+            [
+                "nome" => "Gerenciador de Tarefas KanBan",
+                "finalizado" => false,
+                "data" => "2026-10-01",
+                "descricao" => "Sistema de gerenciamento de tarefas em formato KanBan"
+            ],
+            [
+                "nome" => "Sistema de Cadastro de Clientes",
+                "finalizado" => true,
+                "data" => "2026-11-15",
+                "descricao" => "Sistema de cadastro de clientes com banco de dados"
+            ],
+            [
+                "nome" => "Tela de Login e Cadastro de Usuários",
+                "finalizado" => false,
+                "data" => "2026-12-01",
+                "descricao" => "Tela de login e cadastro de usuários com validação"
+            ]
+        ];
     ?>
 
 
     <h1> <?=$titulo?> <!-- maneira mais curta de imprimir variavel --> </h1>
     <p>
-        <?php 
-            echo $subtitulo;
-        ?>
+        <?=$subtitulo;?>
     </p>
 
     <p>
-        <?php
-            echo $ano;
-        ?>
+        <?=$ano;?>
     </p>
+
 
     <hr>
 
-    <div>
-        <h2><?= $projeto?></h2>
-        <p>
-            <?php 
-                echo $descricao;
-            ?>
-        </p>
-        <div>
-            <div><?=$dataProjeto?></div>
-            <div> Projeto: 
-                <?php if ($finalizado): ?> <!--sintaxe mais curta do if else-->
-                    <span style="color: green;">finalizado ✅</span>
+
+    <ul>
+        <!--           para cada    projeto dentro de projetoS faça isso aqui -->
+        <?php foreach ($projetos as $projeto): ?>
+            <div
+                <?php if ((2026 - $ano) > 2 ): ?>
+                    style="background-color: cadetblue;"
                 <?php else: ?>
-                    <span style="color: red;">não finalizado ❎</span>
-                <?php endif; ?>
-                <?php 
+                    style="background-color: lightcoral;"
+                <?php endif; ?>>
+                
 
-                    if ($finalizado) {
-                        echo " finalizado ✅";
-                    } else {
-                        echo " não finalizado ❎";
-                    }
-                ?>
+                <h2><?= $projeto["nome"] ?></h2>
+                <p>
+                    <?=$projeto["descricao"];?>
+                </p>
+                <div>
+                    <div><?=$projeto["data"]?></div>
+                    <div> Projeto: 
+                        <?php if ($projeto["finalizado"]): ?> <!--sintaxe mais curta do if else-->
+                            <span style="color: green;">finalizado ✅</span>
+                        <?php else: ?>
+                            <span style="color: red;">não finalizado ❎</span>
+                        <?php endif; ?>
+                        <!-- <?php 
+
+                            // if ($projeto["finalizado"]) {
+                            //     echo " finalizado ✅";
+                            // } else {
+                            //     echo " não finalizado ❎";
+                            // }
+                        ?> -->
+                    </div>
+                </div>
             </div>
-        </div>
-
-    </div>
-    
+        <?php endforeach; ?>
+    </ul>
 </body>
 </html>
