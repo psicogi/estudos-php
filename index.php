@@ -11,19 +11,19 @@
     //  criando variavel
         $saudacao = "ola, meus amigos!";
         $nome = "gi";
-        $titulo = $saudacao . " portifolio da " . $nome;
-        $subtitulo = "Seja bem vindo ao meu portifolio";
+        $titulo = $saudacao . " portfolio da " . $nome;
+        $subtitulo = "Seja bem vindo ao meu portfolio";
         $ano = 2026;
-        $projeto = "Portifolio";
-        $descricao = "Meu portifolio feito em HTML e PHP";
+        $projeto = "Portfolio";
+        $descricao = "Meu portfolio feito em HTML e PHP";
         $dataProjeto = "2026-09-16";
         $finalizado = true;
         $projetos = [
             [
-                "nome" => "Meu Portifolio",
+                "nome" => "Meu Portfolio",
                 "finalizado" => true,
                 "data" => "2026-09-16",
-                "descricao" => "Meu portifolio feito em HTML e PHP"
+                "descricao" => "Meu portfolio feito em HTML e PHP"
             ],
             [
                 "nome" => "Gerenciador de Tarefas KanBan",
@@ -44,17 +44,20 @@
                 "descricao" => "Tela de login e cadastro de usuários com validação"
             ]
         ];
+
+        function verificarFinalizacao($p) {
+            if ($p["finalizado"]) {
+                return '<span style="color: green;">finalizado ✅</span>';
+            } else {
+                return '<span style="color: red;">não finalizado ❎</span>';
+            }
+        }
     ?>
 
 
-    <h1> <?=$titulo?> <!-- maneira mais curta de imprimir variavel --> </h1>
-    <p>
-        <?=$subtitulo;?>
-    </p>
-
-    <p>
-        <?=$ano;?>
-    </p>
+    <h1><?=$titulo?> <!-- maneira mais curta de imprimir variavel --></h1>
+    <p><?=$subtitulo;?></p>
+    <p><?=$ano;?></p>
 
 
     <hr>
@@ -72,14 +75,14 @@
                 
 
                 <h2><?= $projeto["nome"] ?></h2>
-                <p>
-                    <?=$projeto["descricao"];?>
-                </p>
+                <p><?=$projeto["descricao"];?></p>
                 <div>
                     <div><?=$projeto["data"]?></div>
                     <div> Projeto: 
-                        <?php if ($projeto["finalizado"]): ?> <!--sintaxe mais curta do if else-->
-                            <span style="color: green;">finalizado ✅</span>
+                        <?= verificarFinalizacao($projeto);?>
+
+                        <!-- <?php if ($projeto["finalizado"]): ?> <!--sintaxe mais curta do if else-->
+                            <!-- <span style="color: green;">finalizado ✅</span> -->
                         <?php else: ?>
                             <span style="color: red;">não finalizado ❎</span>
                         <?php endif; ?>
