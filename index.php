@@ -27,7 +27,7 @@
             ],
             [
                 "nome" => "Gerenciador de Tarefas KanBan",
-                "finalizado" => false,
+                "finalizado" => true,
                 "data" => "2026-10-01",
                 "descricao" => "Sistema de gerenciamento de tarefas em formato KanBan"
             ],
@@ -52,6 +52,22 @@
                 return '<span style="color: red;">não finalizado ❎</span>';
             }
         }
+
+        function filtrarProjetos($projetos, $finalizado = null) {
+
+            if (is_null($finalizado)) {
+                return $projetos;
+            }
+
+            $filtrados = [];
+
+            foreach ($projetos as $projeto) {
+                if ($projeto["finalizado"] === $finalizado) {
+                    $filtrados[] = $projeto;
+                }
+            }
+            return $filtrados;
+        }
     ?>
 
 
@@ -65,7 +81,7 @@
 
     <ul>
         <!--           para cada    projeto dentro de projetoS faça isso aqui -->
-        <?php foreach ($projetos as $projeto): ?>
+        <?php foreach (filtrarProjetos($projetos, false) as $projeto): ?>
             <div
                 <?php if ((2026 - $ano) > 2 ): ?>
                     style="background-color: cadetblue;"
