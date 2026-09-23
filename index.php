@@ -22,25 +22,25 @@
             [
                 "nome" => "Meu Portfolio",
                 "finalizado" => true,
-                "data" => "2026-09-16",
+                "ano" => 2026,
                 "descricao" => "Meu portfolio feito em HTML e PHP"
             ],
             [
                 "nome" => "Gerenciador de Tarefas KanBan",
                 "finalizado" => true,
-                "data" => "2026-10-01",
+                "ano" => 2025,
                 "descricao" => "Sistema de gerenciamento de tarefas em formato KanBan"
             ],
             [
                 "nome" => "Sistema de Cadastro de Clientes",
                 "finalizado" => true,
-                "data" => "2026-11-15",
+                "ano" => 2026,
                 "descricao" => "Sistema de cadastro de clientes com banco de dados"
             ],
             [
                 "nome" => "Tela de Login e Cadastro de Usuários",
                 "finalizado" => false,
-                "data" => "2026-12-01",
+                "ano" => 2026,
                 "descricao" => "Tela de login e cadastro de usuários com validação"
             ]
         ];
@@ -53,21 +53,48 @@
             }
         }
 
-        function filtrarProjetos($projetos, $finalizado = null) {
+        // função anonima
+        // $filtro = function ($projetos, $finalizado = null) {
 
-            if (is_null($finalizado)) {
-                return $projetos;
-            }
+        //     if (is_null($finalizado)) {
+        //         return $projetos;
+        //     }
 
+        //     $filtrados = [];
+
+        //     foreach ($projetos as $projeto) {
+        //         if ($projeto["finalizado"] === $finalizado) {
+        //             $filtrados[] = $projeto;
+        //         }
+        //     }
+        //     return $filtrados;
+        // };
+
+        // uma função que recebe uma função como parametro
+        function filtro($itens, $funcao) {
+
+            // cria um array vazio
             $filtrados = [];
 
-            foreach ($projetos as $projeto) {
-                if ($projeto["finalizado"] === $finalizado) {
-                    $filtrados[] = $projeto;
+            // itera por cada item dentro de itens
+            foreach ($itens as $item) {
+                // chama a função passada como parametro e verifica se o retorno é verdadeiro
+                if ($funcao($item)) {
+                    // se o retorno for verdadeiro, adiciona o item ao array filtrados
+                    $filtrados[] = $item;
                 }
             }
             return $filtrados;
-        }
+        };
+
+        // $projetosFiltrados = $filtro($projetos, false);
+        
+        // chama a função filtro passando como parametro o array de projetos e uma função anonima que verifica se o ano do projeto é menor que 2026
+        $projetosFiltrados = filtro($projetos, function($projeto) {
+            // verifica se o ano do projeto é menor que 2026
+            return $projeto["ano"] < 2026;
+        });
+        // $projetosFiltrados = filtro($projetos, 'finalizado', true);
     ?>
 
 
@@ -75,13 +102,12 @@
     <p><?=$subtitulo;?></p>
     <p><?=$ano;?></p>
 
-
     <hr>
 
 
     <ul>
-        <!--           para cada    projeto dentro de projetoS faça isso aqui -->
-        <?php foreach (filtrarProjetos($projetos, false) as $projeto): ?>
+        <!--para cada  projeto dentro de projetosFiltrados faça isso aqui -->
+        <?php foreach ($projetosFiltrados as $projeto): ?>
             <div
                 <?php if ((2026 - $ano) > 2 ): ?>
                     style="background-color: cadetblue;"
@@ -93,7 +119,7 @@
                 <h2><?= $projeto["nome"] ?></h2>
                 <p><?=$projeto["descricao"];?></p>
                 <div>
-                    <div><?=$projeto["data"]?></div>
+                    <div><?=$projeto["ano"]?></div>
                     <div> Projeto: 
                         <?= verificarFinalizacao($projeto);?>
 
