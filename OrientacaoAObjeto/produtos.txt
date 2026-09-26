@@ -1,0 +1,3 @@
+Codigo: 1 | Produto: Maçã | Preço: 5 | Quantidade: 50
+Codigo: 2 | Produto: Morango | Preço: 13 | Quantidade: 70
+Codigo: 3 | Produto: Laranja | Preço: 7 | Quantidade: 100
