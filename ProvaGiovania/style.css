@@ -1,0 +1,27 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#formulario {
+    display: grid;
+    background-color: blanchedalmond;
+    margin: auto;
+    padding: 15px;
+    max-width: 500px;
+    max-height: 500px;
+}
+
+input {
+    display: inline-block;
+    background-color: blanchedalmond;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #726f6f;
+    margin-bottom: 7px;
+}
+#botao {
+    border-radius: 6px;
+    border: 1px solid #726f6f;
+}

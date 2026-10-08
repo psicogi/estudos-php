@@ -1,0 +1,4 @@
+Numero: 123 | Cliente: Julia Costa | Cpf: 123456654123 | Telefone: Email: ajc@gmail.com | Data da Abertura: 08/10/2026 | Saldo: 1000
+Numero: 44 | Cliente: Mc Luanna | Cpf: 44444444444 | Telefone: Email: maldita@gmail.com | Data da Abertura: 08/10/2026 | Saldo: 440000
+Numero: 44 | Cliente: Mc Luanna | Cpf: 44444444444 | Telefone: Email: maldita@gmail.com | Data da Abertura: 08/10/2026 | Saldo: 440000
+Numero: 44 | Cliente: Mc Luanna | Cpf: 44444444444 | Telefone: Email: maldita@gmail.com | Data da Abertura: 08/10/2026 | Saldo: 440000
